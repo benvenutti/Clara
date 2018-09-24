@@ -19,12 +19,10 @@ endif()
 set_property(TARGET ClaraTests PROPERTY CXX_STANDARD_REQUIRED ON)
 set_property(TARGET ClaraTests PROPERTY CXX_EXTENSIONS OFF)
 
-
 if( CMAKE_CXX_COMPILER_ID MATCHES "Clang|AppleClang|GNU" )
     target_compile_options( ClaraTests PRIVATE -Wall -Wextra -pedantic -Werror )
-endif()
-if( CMAKE_CXX_COMPILER_ID MATCHES "MSVC" )
-	target_compile_options( ClaraTests PRIVATE /W4 /WX )
+elseif( CMAKE_CXX_COMPILER_ID MATCHES "MSVC" )
+    target_compile_options( ClaraTests PRIVATE /W4 /WX )
 endif()
 
 if (ENABLE_COVERAGE)
